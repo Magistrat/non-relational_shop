@@ -1,0 +1,47 @@
+version: '3'
+
+name: ${STACK_NAME}
+
+networks:
+  nginx_network:
+    driver: bridge
+
+services:
+  nginx:
+    image: ${PROXY_NAME}:${APP_VERSION}
+    container_name: nginx_proxy
+    build:
+      context: .
+      dockerfile: dockerfiles/proxy.Dockerfile
+      no_cache: true
+    depends_on:
+      - service
+    ports:
+      - "${EXTERNAL_PORT}:80"
+    networks:
+      - nginx_network
+    restart: always
+
+  service:
+    image: ${IMAGE_NAME}:${APP_VERSION}
+    container_name: ${CONTAINER_NAME}
+    build:
+      context: .
+      dockerfile: dockerfiles/service.Dockerfile
+      no_cache: true
+    deploy:
+      resources:
+        limits:
+          cpus: '0.9'
+          memory: 600M
+        reservations:
+          cpus: '0.1'
+          memory: 300M
+    expose:
+      - ${INTERNAL_PORT}
+    environment:
+      APP_VERSION: ${APP_VERSION}
+      INTERNAL_PORT: ${INTERNAL_PORT}
+    networks:
+      - nginx_network
+    restart: always
