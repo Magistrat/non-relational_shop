@@ -2,11 +2,11 @@ from fastapi import FastAPI
 from uvicorn import run
 
 from logger import app_logger
+from logger import UNICORN_LOGGING_CONFIG
 from routers.api import backend_router
 from settings import APP
 from settings import APP_VERSION
 from settings import HOST
-from settings import LOGGING_CONFIG
 from settings import OPEN_API_VERSION
 from settings import PORT
 from settings import SWAGGER_TAGS_METADATA
@@ -30,7 +30,7 @@ def main() -> None:
     """
     try:
         app_logger.info('Start FastAPI application')
-        run(APP, host=HOST, port=PORT, reload=True, log_config=LOGGING_CONFIG)
+        run(APP, host=HOST, port=PORT, reload=True, log_config=UNICORN_LOGGING_CONFIG)
     except KeyboardInterrupt:
         app_logger.warning('Stop FastAPI application')
     except Exception as e:

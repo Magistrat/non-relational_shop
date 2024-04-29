@@ -9,7 +9,7 @@ from logging import StreamHandler
 from logging import WARNING
 from logging.config import dictConfig
 
-from settings import LOGGING_CONFIG
+from settings import BASE_LOGGING_CONFIG
 
 
 class CustomFormatter(Formatter):
@@ -36,7 +36,7 @@ class CustomFormatter(Formatter):
 
 
 # Get the Logger
-dictConfig(LOGGING_CONFIG)
+dictConfig(BASE_LOGGING_CONFIG)
 app_logger = getLogger('app')
 app_logger.setLevel(INFO)
 
@@ -49,3 +49,37 @@ file_format = Formatter('%(asctime)s %(levelname)s:     %(filename)s:%(lineno)d 
 file_handler = FileHandler('logfile.log')
 file_handler.setFormatter(file_format)
 app_logger.addHandler(file_handler)
+
+
+UNICORN_LOGGING_CONFIG = {
+    **BASE_LOGGING_CONFIG,
+    'formatters': {
+        'default': {
+            '()': CustomFormatter,
+        },
+    },
+    'handlers': {
+        'default': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'default',
+            'level': 'INFO',
+        },
+    },
+    'loggers': {
+        'uvicorn.access': {
+            'handlers': ['default'],
+            'level': 'INFO',
+            'propagate': True
+        },
+        'uvicorn.error': {
+            'handlers': ['default'],
+            'level': 'ERROR',
+            'propagate': True
+        },
+        'app': {
+            'handlers': ['default'],
+            'level': 'INFO',
+            'propagate': True
+        },
+    }
+}

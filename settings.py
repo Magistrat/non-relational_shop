@@ -5,23 +5,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Общие настройки
-LOGGING_CONFIG = {
+BASE_LOGGING_CONFIG = {
     'version': 1,
-    'disable_existing_loggers': True,
-    'loggers': {
-        'uvicorn.access': {
-            'handlers': ['default'],
-            'level': 'INFO',
-            'propagate': True
-        },
-        'uvicorn.error': {
-            'handlers': ['default'],
-            'level': 'ERROR',
-            'propagate': True
-        }
-    }
+    'disable_existing_loggers': True
 }
-
 
 APP = 'main:app'
 APP_VERSION = str(getenv('APP_VERSION'))
