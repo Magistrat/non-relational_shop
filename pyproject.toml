@@ -22,10 +22,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-flake = "python -m flake8 . --config=tox.ini"
-flake_toml = 'python -m flake8 . --toml-config=pyproject.toml'
-lint = "flake8 ."
-mypy = "python -m mypy . --config-file mypy.ini"
+
 
 [tool.mypy]
 ignore_missing_imports = true
