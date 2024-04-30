@@ -5,6 +5,12 @@ name: ${STACK_NAME}
 networks:
   nginx_network:
     driver: bridge
+  db_network:
+    driver: bridge
+
+volumes:
+  mongo_data:
+
 
 services:
   nginx:
@@ -44,4 +50,19 @@ services:
       INTERNAL_PORT: ${INTERNAL_PORT}
     networks:
       - nginx_network
+      - db_network
+    restart: always
+
+  mongo_db:
+    image: mongo
+    container_name: mongo_db
+    ports:
+      - "${MONGO_PORT}:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_LOGIN}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PW}
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - db_network
     restart: always
