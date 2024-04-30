@@ -66,3 +66,14 @@ services:
     networks:
       - db_network
     restart: always
+
+  redis:
+    image: redis
+    container_name: redis_container
+    ports:
+      - "${REDIS_PORT}:6379"
+    environment:
+      REDIS_PASSWORD: ${REDIS_PW}
+    networks:
+      - db_network
+    restart: always
