@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from uvicorn import run
 
+from lifespan import lifespan_handler
 from logger import app_logger
 from logger import UNICORN_LOGGING_CONFIG
 from routers.api import backend_router
@@ -16,7 +17,8 @@ from settings import SWAGGER_TITLE
 app = FastAPI(
     title=SWAGGER_TITLE,
     openapi_tags=SWAGGER_TAGS_METADATA,
-    version=APP_VERSION
+    version=APP_VERSION,
+    lifespan=lifespan_handler
 )
 app.openapi_version = OPEN_API_VERSION
 
