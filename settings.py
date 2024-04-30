@@ -23,3 +23,10 @@ SWAGGER_TAGS_METADATA = [
         'description': 'Swagger documentation'
     },
 ]
+
+REDIS_HOST = str(getenv('REDIS_HOST', default='localhost'))
+REDIS_PORT = str(getenv('REDIS_PORT'))
+REDIS_PW = str(getenv('REDIS_PW'))
+REDIS_LOGIN = str(getenv('REDIS_LOGIN'))
+
+REDIS_CONNECTION_PATH = f'redis://[{REDIS_LOGIN}:{REDIS_PW}]@{REDIS_HOST}:{REDIS_PORT}'
