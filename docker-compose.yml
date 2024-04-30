@@ -73,6 +73,7 @@ services:
     ports:
       - "${REDIS_PORT}:6379"
     environment:
+      REDIS_USERNAME: ${REDIS_LOGIN}
       REDIS_PASSWORD: ${REDIS_PW}
     networks:
       - db_network
