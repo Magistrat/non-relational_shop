@@ -33,4 +33,4 @@ async def get_mongo_shop_service(
     :param mongo_connect: Асинхронное подключение к MongoDB в коллекцию SHOP
     :return: Объект MongoShopService.
     """
-    return MongoShopService(mongo_collection=mongo_connect)
+    return MongoShopService(mongo_connect=mongo_connect)
