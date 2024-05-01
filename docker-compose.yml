@@ -35,6 +35,9 @@ services:
       context: .
       dockerfile: dockerfiles/service.Dockerfile
       no_cache: true
+    depends_on:
+      - mongo_db
+      - redis
     deploy:
       resources:
         limits:
