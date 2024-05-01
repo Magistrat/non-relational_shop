@@ -51,6 +51,12 @@ services:
     environment:
       APP_VERSION: ${APP_VERSION}
       INTERNAL_PORT: ${INTERNAL_PORT}
+      MONGO_PORT: ${MONGO_PORT}
+      MONGO_LOGIN: ${MONGO_LOGIN}
+      MONGO_PW: ${MONGO_PW}
+      REDIS_HOST: ${REDIS_CONTAINER}
+      REDIS_PORT: ${REDIS_PORT}
+      REDIS_PW: ${REDIS_PW}
     networks:
       - nginx_network
       - db_network
@@ -72,12 +78,11 @@ services:
 
   redis:
     image: redis
-    container_name: redis_container
+    container_name: ${REDIS_CONTAINER}
+    command: >
+      --requirepass ${REDIS_PW}
     ports:
       - "${REDIS_PORT}:6379"
-    environment:
-      REDIS_USERNAME: ${REDIS_LOGIN}
-      REDIS_PASSWORD: ${REDIS_PW}
     networks:
       - db_network
     restart: always

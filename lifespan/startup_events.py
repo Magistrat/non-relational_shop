@@ -12,6 +12,10 @@ async def redis_startup():
     :return:
     """
     app_logger.info('Init connection to Redis for cache')
+    redis = aioredis.from_url(
+        REDIS_CONNECTION_PATH,
+        encoding="utf8",
+        decode_responses=True,
+    )
 
-    redis = aioredis.from_url(REDIS_CONNECTION_PATH, encoding="utf8", decode_responses=True)
     FastAPICache.init(RedisBackend(redis), prefix="fastapi-cache")
