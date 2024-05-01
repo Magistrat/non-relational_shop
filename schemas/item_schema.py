@@ -11,12 +11,14 @@ class ItemSchema(BaseModel):
     itemName: Optional[str] = Field(
         description='Название товара',
         init_var=True,
-        kw_only=True
+        kw_only=True,
+        default=None
     )
     description: Optional[str] = Field(
         description='Описание товара',
         init_var=True,
-        kw_only=True
+        kw_only=True,
+        default=None
     )
     measure: Optional[str] = Field(
         description='Единица измерения',
@@ -28,13 +30,14 @@ class ItemSchema(BaseModel):
         description='Цена товара за у.е.',
         init_var=True,
         kw_only=True,
-        decimal_places=2,
-        gt=0
+        gt=0,
+        default=149.99
     )
     photo_url: Optional[str] = Field(
         description='URL-ссылка фотографии',
         init_var=True,
         kw_only=True,
+        default='https://example.org/photos/cake.jpg'
     )
 
     class Config:
@@ -60,7 +63,7 @@ class ItemSchema(BaseModel):
                     "type": "float",
                     "nullable": True,
                     "description": "Цена товара за у.е.",
-                    "example": 100.00,
+                    "example": 149.99,
                 },
                 "photo_url": {
                     "type": "string",
