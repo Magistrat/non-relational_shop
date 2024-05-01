@@ -1,1 +1,1 @@
-from .mongo_service import MongoService
+from .mongo_shop_service import MongoShopService

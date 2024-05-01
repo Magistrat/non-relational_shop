@@ -25,4 +25,5 @@ async def add_item_to_shop(
     """
     Добавление товара в магазин
     """
+    await mongo_shop_service.add_items_to_shop(shop_item=request_body)
     return None
