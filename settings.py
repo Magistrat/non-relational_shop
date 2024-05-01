@@ -16,6 +16,7 @@ OPEN_API_VERSION = '3.0.1'
 HOST = '0.0.0.0'
 PORT = int(str(getenv('INTERNAL_PORT')))
 
+# Настройки Swagger
 SWAGGER_TITLE = "Swagger"
 SWAGGER_TAGS_METADATA = [
     {
@@ -24,8 +25,16 @@ SWAGGER_TAGS_METADATA = [
     },
 ]
 
+# Настройки Redis
 REDIS_HOST = str(getenv('REDIS_HOST', default='localhost'))
 REDIS_PORT = str(getenv('REDIS_PORT'))
 REDIS_PW = str(getenv('REDIS_PW'))
-
 REDIS_CONNECTION_PATH = f'redis://:{REDIS_PW}@{REDIS_HOST}:{REDIS_PORT}/'
+
+# Настройки MongoDB
+MONGO_HOST = str(getenv('MONGO_HOST', default='localhost'))
+MONGO_PORT = str(getenv('MONGO_PORT'))
+MONGO_LOGIN = str(getenv('MONGO_LOGIN'))
+MONGO_PW = str(getenv('MONGO_PW'))
+MONGO_COLLECTION_SHOP = 'shop'
+MONGO_CONNECTION_PATH = f'mongodb://{MONGO_LOGIN}:{MONGO_PW}@{MONGO_HOST}:{MONGO_PORT}/{SHOP_COLLECTION}'
