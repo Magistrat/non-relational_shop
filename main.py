@@ -4,7 +4,7 @@ from uvicorn import run
 from lifespan import lifespan_handler
 from logger import app_logger
 from logger import UNICORN_LOGGING_CONFIG
-from routers.api import backend_router
+from routers.api import services_router
 from settings import APP
 from settings import APP_VERSION
 from settings import HOST
@@ -22,7 +22,7 @@ app = FastAPI(
 )
 app.openapi_version = OPEN_API_VERSION
 
-app.include_router(backend_router, prefix='/api')
+app.include_router(services_router, prefix='/api')
 
 
 def main() -> None:
