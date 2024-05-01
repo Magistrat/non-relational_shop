@@ -1,5 +1,6 @@
 from fastapi import Depends
 from motor.motor_asyncio import AsyncIOMotorClient
+from motor.motor_asyncio import AsyncIOMotorDatabase
 
 from settings import MONGO_CONNECTION_PATH
 from settings import MONGO_COLLECTION_SHOP
@@ -15,7 +16,7 @@ async def get_async_mongo_client_by_motor() -> AsyncIOMotorClient:
 
 async def get_async_mongo_connect_to_shop_by_motor(
         mongo_client: AsyncIOMotorClient = Depends(get_async_mongo_client_by_motor)
-):
+) -> AsyncIOMotorDatabase:
     """
     Возвращает асинхронное подключение к MongoDB в коллекцию SHOP через библиотеку motor
     :return:
