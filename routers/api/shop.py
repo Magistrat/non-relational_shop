@@ -2,5 +2,6 @@ from fastapi import APIRouter
 
 
 shop_router = APIRouter(
-    prefix='/shop'
+    prefix='/shop',
+    tags=['Backend shop API']
 )

@@ -5,7 +5,8 @@ from fastapi_cache.decorator import cache
 
 
 services_router = APIRouter(
-    prefix='/services'
+    prefix='/services',
+    tags=['Project services']
 )
 
 
