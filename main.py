@@ -11,13 +11,11 @@ from settings import APP_VERSION
 from settings import HOST
 from settings import OPEN_API_VERSION
 from settings import PORT
-from settings import SWAGGER_TAGS_METADATA
 from settings import SWAGGER_TITLE
 
 
 app = FastAPI(
     title=SWAGGER_TITLE,
-    openapi_tags=SWAGGER_TAGS_METADATA,
     version=APP_VERSION,
     lifespan=lifespan_handler
 )

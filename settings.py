@@ -18,12 +18,6 @@ PORT = int(str(getenv('INTERNAL_PORT')))
 
 # Настройки Swagger
 SWAGGER_TITLE = "Swagger"
-SWAGGER_TAGS_METADATA = [
-    {
-        'name': "Swagger",
-        'description': 'Swagger documentation'
-    },
-]
 
 # Настройки Redis
 REDIS_HOST = str(getenv('REDIS_HOST', default='localhost'))
