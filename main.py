@@ -6,6 +6,7 @@ from logger import app_logger
 from logger import UNICORN_LOGGING_CONFIG
 from routers.api import services_router
 from routers.api import shop_router
+from routers.web import html_router
 from settings import APP
 from settings import APP_VERSION
 from settings import HOST
@@ -21,8 +22,9 @@ app = FastAPI(
 )
 app.openapi_version = OPEN_API_VERSION
 
-app.include_router(services_router, prefix='/api')
 app.include_router(shop_router, prefix='/api')
+app.include_router(services_router, prefix='/api')
+app.include_router(html_router)
 
 
 def main() -> None:
