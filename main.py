@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 from uvicorn import run
 
 from lifespan import lifespan_handler
@@ -20,6 +21,7 @@ app = FastAPI(
     version=APP_VERSION,
     lifespan=lifespan_handler
 )
+app.mount("/static", StaticFiles(directory="static"), name="static")
 app.openapi_version = OPEN_API_VERSION
 
 app.include_router(shop_router, prefix='/api')
