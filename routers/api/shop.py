@@ -1,3 +1,5 @@
+from typing import List
+
 from fastapi import APIRouter
 from fastapi import Depends
 from fastapi import status
@@ -27,3 +29,18 @@ async def add_item_to_shop(
     """
     await mongo_shop_service.add_items_to_shop(shop_item=request_body)
     return None
+
+
+@shop_router.get(
+    path='/items',
+    summary='Получение списка товаров в магазине',
+    status_code=status.HTTP_200_OK,
+    response_model=List[ItemSchema]
+)
+async def get_all_items_in_shop(
+    mongo_shop_service: MongoShopService = Depends(get_mongo_shop_service),
+):
+    """
+    Получение списка товаров в магазине
+    """
+    return await mongo_shop_service.get_all_items_in_shop()
