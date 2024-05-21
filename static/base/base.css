@@ -42,3 +42,28 @@
     text-align: center;
     width: 100%;
 }
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.add_to_basket {
+    padding: 7px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #1e83ec;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3px;
+    display: block;
+    margin: 20px auto;
+
+}
+
+.add_to_basket:focus,
+.add_to_basket:hover {
+    background-color: #3d82cc;
+}

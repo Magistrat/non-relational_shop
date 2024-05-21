@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
 
+{% block javascript %}
+<script defer src="{{ url_for('static', path='js/basket.js') }}"></script>
+{% endblock %}
+
 {% block css_js_template %}
 <link rel="stylesheet" href="{{ url_for('static', path='css/basket.css') }}">
 {% endblock %}
 
 {% block body_template %}
-<div>Hello world</div>
+<div class="container">
+    <button class="add_to_basket delete_basket">Удалить корзину</button>
+</div>
 {% endblock %}
