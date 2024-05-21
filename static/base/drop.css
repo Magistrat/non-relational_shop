@@ -22,6 +22,10 @@ a:hover{
     color: #1050bf;
 }
 
+img{
+    background: white;
+}
+
 .container {
     width: 100%;
     max-width: 1100px;
@@ -34,11 +38,4 @@ a:hover{
 }
 .display_none{
     display: none;
-}
-
-.main_logo_in_center{
-    font-size: 25px;
-    font-weight: 700;
-    margin: auto;
-    text-align: center;
 }

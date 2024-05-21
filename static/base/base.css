@@ -10,6 +10,11 @@
     margin: 0 13px;
 }
 
+.img_main_logo{
+    width: 33%;
+    margin: 15px 0;
+}
+
 .left_top_menu{
     display: flex;
 }

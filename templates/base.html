@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="{{ url_for('static', path='base/base.css') }}">
         {% block css_js_template %}
         {% endblock %}
-<!--        <link rel="shortcut icon" href="">-->
+        <link rel="shortcut icon" href="{{ url_for('static', path='base/favicon.ico') }}">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta http-equiv="Content-Type" content="text/html">
@@ -18,11 +18,15 @@
     </head>
 
     <body>
-        <div class="top_menu">
-            <div class="left_top_menu">
-
-            </div>
-            <div class="right_top_menu">
+        <div class="container">
+            <div class="top_menu">
+                <div class="left_top_menu">
+                    <a href="/">
+                        <img class="img_main_logo" src="{{ url_for('static', path='img/main_logo.png') }}">
+                    </a>
+                </div>
+                <div class="right_top_menu">
+                </div>
             </div>
         </div>
 
