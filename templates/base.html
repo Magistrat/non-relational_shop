@@ -4,6 +4,7 @@
         {% block javascript %}
         {% endblock %}
         <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Rubik:wght@300&family=Ubuntu&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', path='base/drop.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', path='base/base.css') }}">
         {% block css_js_template %}
         {% endblock %}
@@ -17,7 +18,15 @@
     </head>
 
     <body>
-    {% block body_template %}
-    {% endblock %}
+        <div class="top_menu">
+            <div class="left_top_menu">
+
+            </div>
+            <div class="right_top_menu">
+            </div>
+        </div>
+
+        {% block body_template %}
+        {% endblock %}
     </body>
 </html>

@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    font-family: 'Rubik', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #333;
+    box-sizing: border-box;
+    background: #F7F8F9;
+}
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+a{
+    color: #000;
+    text-decoration: none;
+}
+
+a:hover{
+    color: #1050bf;
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.flex_and_space_between{
+    display: flex;
+    justify-content: space-between;
+}
+.display_none{
+    display: none;
+}
+
+.main_logo_in_center{
+    font-size: 25px;
+    font-weight: 700;
+    margin: auto;
+    text-align: center;
+}

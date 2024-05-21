@@ -1,0 +1,21 @@
+.top_menu{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    background-color: #212121;
+}
+.element_of_menu{
+    color: white;
+    padding: 12px 0;
+    margin: 0 13px;
+}
+
+.left_top_menu{
+    display: flex;
+}
+
+.right_top_menu{
+    display: flex;
+    width: 40%;
+    justify-content: space-evenly;
+}
