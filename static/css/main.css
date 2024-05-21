@@ -24,3 +24,35 @@
     object-fit: contain;
     width: 100%;
 }
+
+.shop_item_title{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.shop_item_description{
+    padding: 0 20px;
+}
+
+.shop_item_measure{
+    margin-top: 20px;
+}
+
+.add_to_basket {
+    padding: 7px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #1e83ec;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3px;
+    display: block;
+    margin: 20px auto;
+
+}
+
+.add_to_basket:focus,
+.add_to_basket:hover {
+    background-color: #3d82cc;
+}

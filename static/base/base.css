@@ -24,3 +24,8 @@
     width: 40%;
     justify-content: space-evenly;
 }
+
+.text_center{
+    text-align: center;
+    width: 100%;
+}

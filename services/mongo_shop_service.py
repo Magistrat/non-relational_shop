@@ -29,8 +29,8 @@ class MongoShopService:
         result = []
 
         for shop_item in await cursor.to_list(length=100):
+            shop_item['id'] = str(shop_item['_id'])
             del shop_item['_id']
-            # shop_item['_id'] = str(shop_item['_id'])
             result.append(shop_item)
 
         return result

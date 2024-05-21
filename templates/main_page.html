@@ -16,16 +16,20 @@
 
             <div class="shop_item_window">
                 <img class="shop_item_img" src="{{ item.photo_url }}">
-                <div class="shop_item_title">{{ item.itemName }}</div>
-                <div class="shop_item_description">{{ item.description }}</div>
-                <div class="shop_item_measure">Цена товара за {{ item.measure }}</div>
-                <div class="shop_item_price">{{ item.price }} руб.</div>
+                <div class="shop_item_title text_center">{{ item.itemName }}</div>
+                <div class="shop_item_description text_center">{{ item.description }}</div>
+                <div class="shop_item_measure text_center">Цена товара за {{ item.measure }}:</div>
+                <div class="shop_item_price text_center">{{ item.price }} руб.</div>
+
+                <button class="add_to_basket" id="{{ item.id }}">Добавить</button>
             </div>
 
         {% endfor %}
 
     </div>
 
+    <div class="main_logo_in_center" style="margin: 40px 0 20px 0px;">Наш офлайн магазин на ул. Ленина д.17:</div>
+    <iframe width=100% height="550px" src="https://www.youtube.com/embed/xAxsYIdUIeU?si=gF547THaB-aL2oPb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 </div>
 {% endblock %}
