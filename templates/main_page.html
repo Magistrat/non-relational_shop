@@ -8,5 +8,24 @@
 {% block body_template %}
 <div class="container">
     <div class="main_logo_in_center">Список доступных товаров для заказа онлайн:</div>
+
+    <div class="shop_window">
+
+
+        {% for item in shop_items %}
+
+            <div class="shop_item_window">
+                <img class="shop_item_img" src="{{ item.photo_url }}">
+                <div class="shop_item_title">{{ item.itemName }}</div>
+                <div class="shop_item_description">{{ item.description }}</div>
+                <div class="shop_item_measure">Цена товара за {{ item.measure }}</div>
+                <div class="shop_item_price">{{ item.price }} руб.</div>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+
 </div>
 {% endblock %}
