@@ -37,3 +37,24 @@ async def get_main_page(
             'shop_items': shop_items
         }
     )
+
+
+@html_router.get(
+    path='/basket',
+    summary='Корзина с покупками интернет-магазина',
+    status_code=status.HTTP_200_OK,
+    response_class=HTMLResponse
+)
+async def get_basket(
+        request: Request,
+):
+    """
+    Корзина с покупками интернет-магазина
+    """
+    return templates.TemplateResponse(
+        'basket.html',
+        {
+            'request': request,
+            # 'shop_items': shop_items
+        }
+    )
