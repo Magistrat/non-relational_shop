@@ -30,4 +30,5 @@ var newArrProducts = GetCookies('Products');
 $('.delete_basket').on('click', function() {
     SetCookies([], 0, 0)
     console.log('Deleted all shop items in basket');
+    location.reload()
 });
