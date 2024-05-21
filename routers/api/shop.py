@@ -32,6 +32,21 @@ async def add_item_to_shop(
 
 
 @shop_router.get(
+    path='/item/{mongo_id}',
+    summary='Получение информации о товаре в магазине по ID',
+    status_code=status.HTTP_200_OK,
+)
+async def get_item_in_shop_by_id(
+    mongo_id: str,
+    mongo_shop_service: MongoShopService = Depends(get_mongo_shop_service),
+) -> ItemSchema:
+    """
+    Получение информации о товаре в магазине по ID
+    """
+    return await mongo_shop_service.get_item_in_shop_by_id(mongo_id=mongo_id)
+
+
+@shop_router.get(
     path='/items',
     summary='Получение списка товаров в магазине',
     status_code=status.HTTP_200_OK,
