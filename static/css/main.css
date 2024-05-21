@@ -1,13 +1,12 @@
 .main_logo_in_center{
     font-size: 25px;
     font-weight: 700;
-    margin: auto;
     text-align: center;
+    margin: 35px 0 20px 0px;
 }
 
 .shop_window{
     display: flex;
-    margin-top: 40px;
     flex-wrap: wrap;
 }
 
