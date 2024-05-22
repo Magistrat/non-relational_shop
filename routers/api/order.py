@@ -32,14 +32,14 @@ async def add_order(
     """
 
     all_products = []
-    for mongo_id in request_body.items:
+    for mongo_id in request_body.products:
         all_products.append(await mongo_shop_service.get_item_in_shop_by_id(mongo_id))
 
     result = OrderToMongo(
         username=request_body.username,
         phone=request_body.phone,
         address=request_body.address,
-        items=all_products
+        products=all_products
     )
     await mongo_order_service.add_order_to_shop(order=result)
     return result
