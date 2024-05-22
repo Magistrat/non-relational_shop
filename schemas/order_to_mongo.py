@@ -3,10 +3,12 @@ from typing import List
 from pydantic import BaseModel
 from pydantic import Field
 
+from schemas import ItemSchema
 
-class OrderFromShop(BaseModel):
+
+class OrderToMongo(BaseModel):
     """
-    Схема заказа в интернете магазине (с id товарами)
+    Схема заказа в интернете магазине (с товарами)
     """
     username: str = Field(
         description='Имя пользователя',
@@ -26,12 +28,12 @@ class OrderFromShop(BaseModel):
         kw_only=True,
         default=''
     )
-    items: List[str]
-    # items: List[str] = Field(
-    #     description='Список _id записей в Mongo',
-    #     init_var=True,
-    #     kw_only=True
-    # )
+    items: List[ItemSchema] = Field(
+        description='Товары в заказе',
+        init_var=True,
+        kw_only=True,
+        default=[]
+    )
 
     class Config:
         json_schema_extra = {
@@ -54,9 +56,9 @@ class OrderFromShop(BaseModel):
                     "description": "Адрес"
                 },
                 "items": {
-                    # "type": "array",
-                    "nullable": False,
-                    "description": "Список _id записей в Mongo",
+                    "type": "array",
+                    "items": ItemSchema.Config.json_schema_extra,
+                    "description": "Товары в заказе",
                 }
             }
         }
