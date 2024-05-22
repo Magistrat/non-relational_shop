@@ -1,3 +1,5 @@
+from typing import List
+
 from fastapi import APIRouter
 from fastapi import Depends
 from fastapi import status
@@ -41,3 +43,17 @@ async def add_order(
     )
     await mongo_order_service.add_order_to_shop(order=result)
     return result
+
+
+@order_router.get(
+    path='/',
+    summary='Получение интернет заказов',
+    status_code=status.HTTP_200_OK,
+)
+async def get_order(
+    mongo_order_service: MongoShopService = Depends(get_mongo_orders_service),
+) -> List[OrderToMongo]:
+    """
+    Получение интернет заказов
+    """
+    return await mongo_order_service.get_orders()

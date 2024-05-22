@@ -63,3 +63,18 @@ class MongoShopService:
         :return:
         """
         await self._mongo_connect.records.insert_one(order.dict())
+
+    async def get_orders(self) -> List[OrderToMongo]:
+        """
+        Получение всех заказов интернет магазине
+        :return: Список всех заказов магазина
+        """
+        cursor = self._mongo_connect.records.find({})
+        result = []
+
+        for order_item in await cursor.to_list(length=100):
+            order_item['id'] = str(order_item['_id'])
+            del order_item['_id']
+            result.append(order_item)
+
+        return result
