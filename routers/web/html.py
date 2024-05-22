@@ -5,6 +5,7 @@ from fastapi import status
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
+from depends import get_mongo_orders_service
 from depends import get_mongo_shop_service
 from services import MongoShopService
 
@@ -55,6 +56,27 @@ async def get_basket(
         'basket.html',
         {
             'request': request,
-            # 'shop_items': shop_items
+        }
+    )
+
+
+@html_router.get(
+    path='/orders',
+    summary='Список всех заказов интернет-магазина',
+    status_code=status.HTTP_200_OK,
+    response_class=HTMLResponse
+)
+async def get_all_orders(
+        request: Request,
+        mongo_orders_service: MongoShopService = Depends(get_mongo_orders_service),
+):
+    """
+    Список всех заказов интернет-магазина
+    """
+    return templates.TemplateResponse(
+        'orders.html',
+        {
+            'request': request,
+            'orders_items': await mongo_orders_service.get_orders()
         }
     )

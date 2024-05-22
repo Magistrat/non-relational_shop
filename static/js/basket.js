@@ -39,9 +39,6 @@ newArrProducts.forEach(function(item, i, newArrProducts) {
     fetch("api/shop/item/" + item)
       .then(async (response) => {
         let data = await response.json();
-
-
-        document.getElementById('basket_list').innerHTML ='<div>html data</div>';
         mainHtmlText += GetHtmlToInsert(data.photo_url, data.itemName, data.description, data.measure, data.price)
         document.getElementById('basket_list').innerHTML = mainHtmlText;
       });

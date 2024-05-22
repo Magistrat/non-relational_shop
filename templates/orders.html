@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block css_js_template %}
+<link rel="stylesheet" href="{{ url_for('static', path='css/orders.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='css/basket.css') }}">
+{% endblock %}
+
+{% block body_template %}
+<div class="container">
+
+    <div class="main_logo_in_center">Список всех заказов:</div>
+
+    {% for order in orders_items %}
+
+        <div class="item_in_basket_list">
+            <div class="orders_inner_padding">
+                <div class="">Имя: {{order.username}} <span>({{order.phone}})</span></div>
+                <div>Адрес: {{order.address}}</div>
+
+                <ul>
+                    {% for product in order.products %}
+                        <li>{{product.itemName}} ({{product.description}}) - 1 {{product.measure}} за {{product.price}} ₽</li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+
+        </div>
+
+    {% endfor %}
+</div>
+{% endblock %}
