@@ -26,7 +26,27 @@ function SetCookies(arrFilms, youtubeID, days) {
   console.log('Set: ' + setCookie);
 }
 
+function GetHtmlToInsert(urlImg, title, description, measure, price){
+    var htmlText = '<div class="item_in_basket_list display_flex"><div class="left_flex"><img class="item_img_in_basket_list" src="'+urlImg+'"><div class="item_title_and_description_in_basket_list"><div class="item_title_in_basket_list shop_item_title">'+title+'</div><div class="item_description_in_basket_list">'+description+'</div></div></div><div class="item_price_and_measure_in_basket_list"><div class="item_measure_in_basket_list">Кол-во: 1 '+measure+'</div><div class="item_price_in_basket_list">'+price+' ₽</div></div></div>';
+    return htmlText;
+}
+
 var newArrProducts = GetCookies('Products');
+console.log(newArrProducts);
+
+var mainHtmlText = '';
+newArrProducts.forEach(function(item, i, newArrProducts) {
+    fetch("http://localhost:7081/api/shop/item/" + item)
+      .then(async (response) => {
+        let data = await response.json();
+
+
+        document.getElementById('basket_list').innerHTML ='<div>html data</div>';
+        mainHtmlText += GetHtmlToInsert(data.photo_url, data.itemName, data.description, data.measure, data.price)
+        document.getElementById('basket_list').innerHTML = mainHtmlText;
+      });
+});
+
 $('.delete_basket').on('click', function() {
     SetCookies([], 0, 0)
     console.log('Deleted all shop items in basket');

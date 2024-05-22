@@ -6,6 +6,8 @@
     align-items: center;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 18px;
     border-radius: 10px;
+    margin: 7px 0;
+    justify-content: space-between;
 }
 
 .item_img_in_basket_list{
@@ -20,7 +22,7 @@
 }
 
 .item_price_and_measure_in_basket_list{
-    width: 12%;
+    width: 100px;
 }
 
 .item_title_in_basket_list{
@@ -33,4 +35,9 @@
 
 .item_price_in_basket_list{
 
+}
+
+.left_flex{
+    display: flex;
+    width: 80%;
 }
