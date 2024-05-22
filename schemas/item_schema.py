@@ -8,7 +8,7 @@ class ItemSchema(BaseModel):
     """
     Схема товара в интернет магазине
     """
-    itemName: Optional[str] = Field(
+    itemName: str = Field(
         description='Название товара',
         init_var=True,
         kw_only=True,
@@ -20,20 +20,20 @@ class ItemSchema(BaseModel):
         kw_only=True,
         default=None
     )
-    measure: Optional[str] = Field(
+    measure: str = Field(
         description='Единица измерения',
         init_var=True,
         kw_only=True,
         default='шт.'
     )
-    price: Optional[float] = Field(
+    price: float = Field(
         description='Цена товара за у.е.',
         init_var=True,
         kw_only=True,
         gt=0,
         default=149.99
     )
-    photo_url: Optional[str] = Field(
+    photo_url: str = Field(
         description='URL-ссылка фотографии',
         init_var=True,
         kw_only=True,

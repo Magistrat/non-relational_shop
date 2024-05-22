@@ -36,7 +36,7 @@ console.log(newArrProducts);
 
 var mainHtmlText = '';
 newArrProducts.forEach(function(item, i, newArrProducts) {
-    fetch("http://localhost:7081/api/shop/item/" + item)
+    fetch("api/shop/item/" + item)
       .then(async (response) => {
         let data = await response.json();
 
@@ -59,6 +59,18 @@ function makeOrderFromBasket(){
     var IdPhone = document.getElementById('id_phone').value;
     var IdAddress = document.getElementById('id_address').value;
 
+    fetch('api/order', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(
+            {
+                username: IdUser,
+                phone: IdPhone,
+                address: IdAddress,
+                items: GetCookies('Products')
+            }
+        )
+    })
 //    SetCookies([], 0, 0);
     return false;
 }
