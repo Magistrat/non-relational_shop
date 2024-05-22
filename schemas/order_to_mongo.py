@@ -28,7 +28,7 @@ class OrderToMongo(BaseModel):
         kw_only=True,
         default=''
     )
-    items: List[ItemSchema] = Field(
+    products: List[ItemSchema] = Field(
         description='Товары в заказе',
         init_var=True,
         kw_only=True,
@@ -55,7 +55,7 @@ class OrderToMongo(BaseModel):
                     "nullable": False,
                     "description": "Адрес"
                 },
-                "items": {
+                "products": {
                     "type": "array",
                     "items": ItemSchema.Config.json_schema_extra,
                     "description": "Товары в заказе",

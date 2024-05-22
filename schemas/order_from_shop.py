@@ -26,8 +26,8 @@ class OrderFromShop(BaseModel):
         kw_only=True,
         default=''
     )
-    items: List[str]
-    # items: List[str] = Field(
+    products: List[str]
+    # products: List[str] = Field(
     #     description='Список _id записей в Mongo',
     #     init_var=True,
     #     kw_only=True
@@ -53,7 +53,7 @@ class OrderFromShop(BaseModel):
                     "nullable": False,
                     "description": "Адрес"
                 },
-                "items": {
+                "products": {
                     # "type": "array",
                     "nullable": False,
                     "description": "Список _id записей в Mongo",

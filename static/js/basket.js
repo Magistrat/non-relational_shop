@@ -67,10 +67,11 @@ function makeOrderFromBasket(){
                 username: IdUser,
                 phone: IdPhone,
                 address: IdAddress,
-                items: GetCookies('Products')
+                products: GetCookies('Products')
             }
         )
     })
     SetCookies([], 0, 0);
+    location.reload()
     return false;
 }
