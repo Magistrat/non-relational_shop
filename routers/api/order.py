@@ -3,6 +3,7 @@ from fastapi import Depends
 from fastapi import status
 
 from depends import get_mongo_shop_service
+from depends import get_mongo_orders_service
 from schemas import OrderFromShop
 from schemas import OrderToMongo
 from services import MongoShopService
@@ -22,9 +23,21 @@ order_router = APIRouter(
 async def add_order(
     request_body: OrderFromShop,
     mongo_shop_service: MongoShopService = Depends(get_mongo_shop_service),
+    mongo_order_service: MongoShopService = Depends(get_mongo_orders_service),
 ) -> OrderToMongo:
     """
     Добавление интернет заказа
     """
-    print()
-    return None
+
+    all_products = []
+    for mongo_id in request_body.items:
+        all_products.append(await mongo_shop_service.get_item_in_shop_by_id(mongo_id))
+
+    result = OrderToMongo(
+        username=request_body.username,
+        phone=request_body.phone,
+        address=request_body.address,
+        items=all_products
+    )
+    await mongo_order_service.add_order_to_shop(order=result)
+    return result

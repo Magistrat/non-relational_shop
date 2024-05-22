@@ -5,6 +5,7 @@ from motor.motor_asyncio import AsyncIOMotorDatabase
 from fastapi import HTTPException
 
 from schemas import ItemSchema
+from schemas import OrderToMongo
 
 
 class MongoShopService:
@@ -20,7 +21,7 @@ class MongoShopService:
         :param shop_item: Товар для добавления
         :return:
         """
-        await self._mongo_connect.records.insert_one(dict(shop_item))
+        await self._mongo_connect.records.insert_one(shop_item.dict())
 
     async def get_all_items_in_shop(self) -> List[ItemSchema]:
         """
@@ -54,3 +55,11 @@ class MongoShopService:
             )
 
         return results[0]
+
+    async def add_order_to_shop(self, order: OrderToMongo) -> None:
+        """
+        Добавляет заказа в MongoDB
+        :param order: Заказа для добавления
+        :return:
+        """
+        await self._mongo_connect.records.insert_one(order.dict())
