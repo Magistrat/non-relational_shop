@@ -56,6 +56,7 @@ async def get_basket(
         'basket.html',
         {
             'request': request,
+            'has_products': bool(request.cookies.get('Products'))
         }
     )
 
