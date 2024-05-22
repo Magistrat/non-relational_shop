@@ -1,0 +1,27 @@
+from fastapi import APIRouter
+from fastapi import Depends
+from fastapi import status
+
+from depends import get_mongo_shop_service
+from services import MongoShopService
+
+
+order_router = APIRouter(
+    prefix='/order',
+    tags=['Backend order API']
+)
+
+
+@order_router.post(
+    path='/',
+    summary='Добавление интернет заказа',
+    status_code=status.HTTP_200_OK,
+)
+async def add_order(
+    request_body: dict,
+    mongo_shop_service: MongoShopService = Depends(get_mongo_shop_service),
+):
+    """
+    Добавление интернет заказа
+    """
+    return None

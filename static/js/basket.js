@@ -52,3 +52,13 @@ $('.delete_basket').on('click', function() {
     console.log('Deleted all shop items in basket');
     location.reload()
 });
+
+function makeOrderFromBasket(){
+    console.log('Make order');
+    var IdUser = document.getElementById('id_username').value;
+    var IdPhone = document.getElementById('id_phone').value;
+    var IdAddress = document.getElementById('id_address').value;
+
+//    SetCookies([], 0, 0);
+    return false;
+}
