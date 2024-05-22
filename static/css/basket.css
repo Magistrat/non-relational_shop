@@ -1,0 +1,36 @@
+.basket_list{
+
+}
+
+.item_in_basket_list{
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 18px;
+    border-radius: 10px;
+}
+
+.item_img_in_basket_list{
+    object-fit: contain;
+    width: 8%;
+    padding: 4px;
+    border-radius: 10px;
+}
+
+.item_title_and_description_in_basket_list{
+    padding-left: 25px;
+}
+
+.item_price_and_measure_in_basket_list{
+    width: 12%;
+}
+
+.item_title_in_basket_list{
+
+}
+
+.item_measure_in_basket_list{
+
+}
+
+.item_price_in_basket_list{
+
+}

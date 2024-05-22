@@ -67,3 +67,15 @@
 .add_to_basket:hover {
     background-color: #3d82cc;
 }
+
+.main_logo_in_center{
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center;
+    margin: 35px 0 20px 0px;
+}
+
+.shop_item_title{
+    font-size: 20px;
+    font-weight: 700;
+}
