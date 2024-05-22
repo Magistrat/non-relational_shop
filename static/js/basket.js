@@ -71,6 +71,6 @@ function makeOrderFromBasket(){
             }
         )
     })
-//    SetCookies([], 0, 0);
+    SetCookies([], 0, 0);
     return false;
 }
